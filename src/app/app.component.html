@@ -1,1 +1,28 @@
-<h1>Version V1 is runnning ...</h1>
+<!-- Show offline status -->
+<div *ngIf="offline" style="background-color: red; color: white; padding: 10px">
+  You are offline
+</div>
+
+<!-- Show online status -->
+<div
+  *ngIf="!offline"
+  style="background-color: green; color: white; padding: 10px"
+>
+  You are online
+</div>
+
+<span *ngIf="locations.length > 0">
+  <div *ngFor="let loc; in: locations">{{ loc }}</div>
+</span>
+
+<!-- Show geolocation button -->
+<button (click)="getGeolocation()">Get location</button>
+
+<h2>Locations:</h2>
+<ul>
+  <div *ngIf="locations.length > 0">
+    <li *ngFor="let location of locations">
+      Latitude: {{ location.latitude }}, Longitude: {{ location.longitude }}
+    </li>
+  </div>
+</ul>
